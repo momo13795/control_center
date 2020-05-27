@@ -1,0 +1,25 @@
+version: '3'
+services:
+  #PHP Service
+  php-fpm:
+    build:
+      context: ${PHP_FPM_DOCKER_FILE_PATH}
+      dockerfile: Dockerfile
+    image: juccexu/php-fpm
+    #container_name: ${PHP_FPM_NAME}
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ${PROJECT_CODE}:/var/www
+      - ${PHP_FPM_FILES_PATH}/conf.d/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ${PHP_FPM_FILES_PATH}/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ${PHP_FPM_FILES_PATH}/php-fpm.d:/usr/local/etc/php-fpm.d
+      #- ${PHP_FPM_FILES_PATH}/php.ini-development:/usr/local/etc/php/php.ini-development
+
+    env_file:
+      - .env
+#Docker Networks
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

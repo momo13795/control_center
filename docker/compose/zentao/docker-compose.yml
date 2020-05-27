@@ -1,0 +1,19 @@
+version: '3'
+services:
+  zentao:
+      image: idoop/zentao:latest
+      container_name: ZentaoApplication
+      restart: always
+      environment:
+        ADMINER_USER: "mark"
+        ADMINER_PASSWD:
+        BIND_ADDRESS: "false"
+      ports:
+        - 8085:80
+        - 3085:3306
+      volumes:
+        - ${PROJECT_ROOT}/configs/zentao/data/zbox/:/opt/zbox/
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

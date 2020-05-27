@@ -1,0 +1,19 @@
+FROM php:7.2-fpm
+LABEL maintainer="juccexu" email="juccexu@gmail.com"
+
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
+
+WORKDIR /app
+RUN set -eux && \
+    apt-get update && \
+    apt-get install -y gosu && \
+    rm -rf /var/lib/apt/lists/* && \
+    # verify that the binary works
+    gosu nobody true && \
+    useradd -s /bin/bash -m user
+
+COPY docker-entrypoint.sh .
+RUN chmod a+x docker-entrypoint.sh
+
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["php-fpm"]
