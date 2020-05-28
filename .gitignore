@@ -1,5 +1,5 @@
 .idea*
 .env
-configs/jenkins/jekins_home
+configs/jenkins/jenkins_home
 configs/mysql/data
 configs/zentao/data
