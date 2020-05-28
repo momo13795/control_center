@@ -103,3 +103,40 @@ Version: '10.3.13-MariaDB'  socket: '/opt/zbox/tmp/mysql/mysql.sock'  port: 3306
 2020-05-27  6:08:05 171 [Warning] Access denied for user 'root'@'172.30.0.1' (using password: YES)
 2020-05-27  6:14:11 181 [Warning] Access denied for user 'root'@'localhost' (using password: YES)
 2020-05-27  6:14:20 182 [Warning] Access denied for user 'root'@'localhost' (using password: YES)
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-locks' is error-prone and can break in the future. Please use the full name 'innodb-locks-unsafe-for-binlog' instead.
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-cmp' is error-prone and can break in the future. Please use the full name 'innodb-cmp-per-index-enabled' instead.
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-cmp-per-index' is error-prone and can break in the future. Please use the full name 'innodb-cmp-per-index-enabled' instead.
+2020-05-28  2:43:57 0 [Note] Plugin 'InnoDB' is disabled.
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-sys-tables' is error-prone and can break in the future. Please use the full name 'innodb-sys-tablestats' instead.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_SYS_TABLESTATS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_CMPMEM' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_DELETED' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_CMP_RESET' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_LOCK_WAITS' is disabled.
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-buffer-page' is error-prone and can break in the future. Please use the full name 'innodb-buffer-page-lru' instead.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_BUFFER_PAGE_LRU' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_SYS_FIELDS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_CMPMEM_RESET' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'FEEDBACK' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_SYS_COLUMNS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_INDEX_TABLE' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_CMP_PER_INDEX_RESET' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_INDEX_CACHE' is disabled.
+2020-05-28  2:43:57 0 [Note] Using unique option prefix 'innodb-sys-foreign' is error-prone and can break in the future. Please use the full name 'innodb-sys-foreign-cols' instead.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_SYS_FOREIGN_COLS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_BEING_DELETED' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_BUFFER_POOL_STATS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_TRX' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_DEFAULT_STOPWORD' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_FT_CONFIG' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_METRICS' is disabled.
+2020-05-28  2:43:57 0 [Note] Plugin 'INNODB_SYS_INDEXES' is disabled.
+2020-05-28  2:43:57 0 [Warning] /opt/zbox/run/mysql/mysqld: unknown variable 'loose-innodb-ft-inserted=0'
+2020-05-28  2:43:57 0 [Note] Server socket created on IP: '0.0.0.0'.
+2020-05-28  2:43:57 1 [Warning] Failed to load slave replication state from table mysql.gtid_slave_pos: 1286: Unknown storage engine 'InnoDB'
+2020-05-28  2:43:57 0 [Note] Reading of all Master_info entries succeded
+2020-05-28  2:43:57 0 [Note] Added new Master_info '' to hash table
+2020-05-28  2:43:57 0 [Note] /opt/zbox/run/mysql/mysqld: ready for connections.
+Version: '10.3.13-MariaDB'  socket: '/opt/zbox/tmp/mysql/mysql.sock'  port: 3306  Source distribution
+2020-05-28  2:51:02 5 [ERROR] mysqld: Table './zentao/zt_cron' is marked as crashed and should be repaired
+2020-05-28  2:51:02 5 [Warning] Checking table:   './zentao/zt_cron'

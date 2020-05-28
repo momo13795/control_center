@@ -3,21 +3,18 @@ services:
   #PHP Service
   php-fpm:
     build:
-      context: ${PHP_FPM_DOCKER_FILE_PATH}
+      context: ${PROJECT_ROOT}/docker/Dockfile/php-fpm
       dockerfile: Dockerfile
     image: juccexu/php-fpm
-    #container_name: ${PHP_FPM_NAME}
     restart: unless-stopped
     working_dir: /var/www
     volumes:
       - ${PROJECT_CODE}:/var/www
-      - ${PHP_FPM_FILES_PATH}/conf.d/local.ini:/usr/local/etc/php/conf.d/local.ini
-      - ${PHP_FPM_FILES_PATH}/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ${PHP_FPM_FILES_PATH}/php-fpm.d:/usr/local/etc/php-fpm.d
-      #- ${PHP_FPM_FILES_PATH}/php.ini-development:/usr/local/etc/php/php.ini-development
-
-    env_file:
-      - .env
+      - ${PROJECT_ROOT}/configs/php-fpm/conf.d/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ${PROJECT_ROOT}/configs/php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ${PROJECT_ROOT}/configs/php-fpm/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ${PROJECT_ROOT}/configs/php-fpm/php.ini-development:/usr/local/etc/php/php.ini-development
+      - ${PROJECT_ROOT}/configs/php-fpm/php.ini-production:/usr/local/etc/php/php.ini-production
 #Docker Networks
 networks:
   default:

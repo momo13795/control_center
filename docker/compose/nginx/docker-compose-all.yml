@@ -3,7 +3,7 @@ services:
   #Nginx Service
   webserver:
     image: harbor.jucce.cn/god/nginx:1.0
-    container_name: ${NGINX_NAME}
+    container_name: ${NGINX_GET_NAME}
     restart: unless-stopped
     tty: true
     ports:
@@ -14,10 +14,8 @@ services:
       - "490:443"
     volumes:
       - ${PROJECT_CODE}:/var/www
-      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
-      - ${NGINX_FILES_PATH}/nginx.conf:/etc/nginx/nginx.conf
-    env_file:
-      - .env
+      - ${PROJECT_ROOT}/configs/nginx/conf.d:/etc/nginx/conf.d
+      - ${PROJECT_ROOT}/configs/nginx/nginx.conf:/etc/nginx/nginx.conf
 #Docker Networks
 networks:
   default:
