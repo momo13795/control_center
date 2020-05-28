@@ -7,10 +7,10 @@ docker network create ${NETWORK}
 
 #############service 启动###########################
 echo '启动nginx'
-docker-compose -f docker/compose/nginx/docker-compose-all.yml up -d
+docker-compose -f docker/compose/nginx/docker-compose.yml up -d
 
 echo '启动php-fpm'
-docker-compose -f docker/compose/php-fpm/docker-compose-all.yml up --build --no-deps -d --scale php-fpm=2
+docker-compose -f docker/compose/php-fpm/docker-compose.yml up --build --no-deps -d --scale php-fpm=2
 
 echo '启动jenkins'
 docker-compose -f docker/compose/jenkins/docker-compose.yml up -d

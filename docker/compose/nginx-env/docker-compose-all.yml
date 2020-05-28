@@ -1,0 +1,23 @@
+version: '3'
+services:
+  #Nginx Service
+  webserver_env:
+    image: harbor.jucce.cn/god/nginx-env:latest
+    container_name: ${NGINX_NAME}
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "70:80"
+      - "470:443"
+    volumes:
+      - ${PROJECT_CODE}:/var/www
+      - ${PROJECT_ROOT}/configs/nginx-env/conf.d:/etc/nginx/conf.d
+      - ${PROJECT_ROOT}/configs/nginx-env/nginx.conf:/etc/nginx/nginx.conf
+    #command: ["/usr/local/bin/start.sh"]
+    environment:
+      NGINX_HOST: ${NGINX_HOST}
+#Docker Networks
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

@@ -4,3 +4,5 @@
 [Wed May 27 05:39:01.232677 2020] [core:notice] [pid 58:tid 140311463302976] AH00094: Command line: '/opt/zbox/run/apache/httpd'
 [Thu May 28 02:43:53.219162 2020] [mpm_event:notice] [pid 62:tid 139804160075584] AH00489: Apache/2.4.25 (Unix) OpenSSL/1.0.2n configured -- resuming normal operations
 [Thu May 28 02:43:53.220645 2020] [core:notice] [pid 62:tid 139804160075584] AH00094: Command line: '/opt/zbox/run/apache/httpd'
+[Thu May 28 07:04:29.218990 2020] [mpm_event:notice] [pid 55:tid 140230892488512] AH00489: Apache/2.4.25 (Unix) OpenSSL/1.0.2n configured -- resuming normal operations
+[Thu May 28 07:04:29.220222 2020] [core:notice] [pid 55:tid 140230892488512] AH00094: Command line: '/opt/zbox/run/apache/httpd'
