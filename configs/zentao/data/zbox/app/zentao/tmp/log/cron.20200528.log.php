@@ -243,3 +243,57 @@ command: moduleName=ci&methodName=exec.
 return : .
 output : 
 success
+11:40:05 task 7 executed,
+command: moduleName=mail&methodName=asyncSend.
+return : .
+output : 
+OK
+
+11:40:05 task 8 executed,
+command: moduleName=webhook&methodName=asyncSend.
+return : .
+output : 
+NO WEBHOOK EXIST.
+
+11:40:05 task 9 executed,
+command: moduleName=admin&methodName=deleteLog.
+return : .
+output : 
+
+11:40:05 task 12 executed,
+command: moduleName=ci&methodName=checkCompileStatus.
+return : .
+output : 
+success
+11:40:05 task 13 executed,
+command: moduleName=ci&methodName=exec.
+return : .
+output : 
+success
+11:45:03 task 7 executed,
+command: moduleName=mail&methodName=asyncSend.
+return : .
+output : 
+OK
+
+11:45:03 task 8 executed,
+command: moduleName=webhook&methodName=asyncSend.
+return : .
+output : 
+NO WEBHOOK EXIST.
+
+11:45:03 task 9 executed,
+command: moduleName=admin&methodName=deleteLog.
+return : .
+output : 
+
+11:45:03 task 12 executed,
+command: moduleName=ci&methodName=checkCompileStatus.
+return : .
+output : 
+success
+11:45:03 task 13 executed,
+command: moduleName=ci&methodName=exec.
+return : .
+output : 
+success

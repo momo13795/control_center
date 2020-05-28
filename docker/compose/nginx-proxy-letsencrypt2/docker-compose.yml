@@ -9,10 +9,10 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
-      - ${NGINX_FILES_PATH}/vhost:/etc/nginx/vhost.d
-      - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
-      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/conf.d:/etc/nginx/conf.d
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/html:/usr/share/nginx/html
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs:ro
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
     restart: always
@@ -24,10 +24,10 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
-      - ${NGINX_FILES_PATH}/conf.d:/etc/nginx/conf.d
-      - ${NGINX_FILES_PATH}/vhost:/etc/nginx/vhost.d
-      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs:ro
-      - ${NGINX_FILES_PATH}/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/conf.d:/etc/nginx/conf.d
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs:ro
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.docker_gen"
@@ -40,9 +40,9 @@ services:
       - nginx-proxy
       - docker-gen
     volumes:
-      - ${NGINX_FILES_PATH}/vhost:/etc/nginx/vhost.d
-      - ${NGINX_FILES_PATH}/html:/usr/share/nginx/html
-      - ${NGINX_FILES_PATH}/certs:/etc/nginx/certs
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/html:/usr/share/nginx/html
+      - ${NGINX_FILES_PATH}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: always
 
