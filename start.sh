@@ -1,6 +1,8 @@
 #!/bin/bash
 #全局环境变量配置
 source ./.env
+#创建指定网络
+docker network create ${NETWORK}
 
 
 #############service 启动###########################
