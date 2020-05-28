@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+
+  nginx-proxy:
+    image: harbor.jucce.cn/god/nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/conf.d:/etc/nginx/conf.d
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/html:/usr/share/nginx/html
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs:ro
+    labels:
+      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+    restart: always
+
+  docker-gen:
+    image: harbor.jucce.cn/god/docker-gen:latest
+    command: -notify-sighup nginx-proxy -watch /etc/docker-gen/templates/nginx.tmpl /etc/nginx/conf.d/default.conf
+    container_name: nginx-proxy-gen
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/conf.d:/etc/nginx/conf.d
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs:ro
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    labels:
+      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.docker_gen"
+    restart: always
+
+  letsencrypt:
+    image: harbor.jucce.cn/god/letsencrypt-nginx-proxy-companion:latest
+    container_name: nginx-proxy-le
+    depends_on:
+      - nginx-proxy
+      - docker-gen
+    volumes:
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/html:/usr/share/nginx/html
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: always
+
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}
