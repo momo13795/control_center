@@ -1,0 +1,30 @@
+# 集群名称
+cluster.name: my-test
+#节点名称
+node.name: es1
+# 是否为主节点
+node.master: true
+# 该节点是否存储数据
+node.data: true
+# 对外开放的http端口
+http.port: 9200
+transport.tcp.port: 9300
+# 是否运行跨域REST请求
+http.cors.enabled: true
+# 允许跨域请求来自何处
+http.cors.allow-origin: "*"
+
+# 有资格成为主节点的资格列表
+cluster.initial_master_nodes: ["es1","es2","es3"]
+
+discovery.seed_hosts: ["es2","es3"]
+#discovery.zen.ping.unicast.hosts: ["es1","es2","es3"]
+# 有成为主节点资格的最小节点数
+#discovery.zen.minimum_master_nodes: 2
+
+#锁定进程的物理内存地址避免交换（swapped）来提高性能
+bootstrap.memory_lock: true
+
+network.host: 0.0.0.0
+
+

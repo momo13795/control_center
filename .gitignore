@@ -3,3 +3,10 @@
 configs/jenkins/jenkins_home
 configs/mysql/data
 configs/zentao/data
+configs/elasticsearch-7.7.0/data1
+configs/elasticsearch-7.7.0/data2
+configs/elasticsearch-7.7.0/data3
+configs/elasticsearch-6.6.2/data0
+configs/elasticsearch-6.6.2/data1
+configs/elasticsearch-6.6.2/data2
+configs/elasticsearch/data

@@ -1,0 +1,67 @@
+version: '3'
+services:
+  es1:
+    image: elasticsearch:7.7.0
+    container_name: es1
+    privileged: true
+    environment:
+      #- node.name=es1
+      #- cluster.name=es-docker-cluster
+      #- discovery.seed_hosts=es2,es3
+      #- cluster.initial_master_nodes=es1,es2,es3
+      #- bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/data1:/usr/share/elasticsearch/data
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/es1.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9203:9200
+  es2:
+    image: elasticsearch:7.7.0
+    container_name: es2
+    privileged: true
+    environment:
+      #- node.name=es2
+      #- cluster.name=es-docker-cluster
+      #- discovery.seed_hosts=es1,es3
+      #- cluster.initial_master_nodes=es1,es2,es3
+      #- bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/data2:/usr/share/elasticsearch/data
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/es2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9201:9200
+  es3:
+    image: elasticsearch:7.7.0
+    container_name: es3
+    privileged: true
+    environment:
+      #- node.name=es3
+      #- cluster.name=es-docker-cluster
+      #- discovery.seed_hosts=es1,es2
+      #- cluster.initial_master_nodes=es1,es2,es3
+      #- bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/data3:/usr/share/elasticsearch/data
+      - ${PROJECT_ROOT}/configs/elasticsearch-7.7.0/es3.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+      - 9202:9200
+#Docker Networks
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

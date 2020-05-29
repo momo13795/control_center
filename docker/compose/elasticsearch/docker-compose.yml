@@ -1,0 +1,18 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:7.7.0
+    #restart: always
+    ports:
+      - "9204:9200"
+      - "9304:9300"
+    environment:
+      - discovery.type=single-node
+    volumes:
+       - ${PROJECT_ROOT}/configs/elasticsearch/data:/usr/share/elasticsearch/data:rw
+       - ${PROJECT_ROOT}/configs/elasticsearch/logs:/usr/share/elasticsearch/logs:rw
+#Docker Networks
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

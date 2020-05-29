@@ -1,0 +1,15 @@
+cluster.name: my-test
+node.name: es2
+node.master: true
+node.data: true
+http.port: 9200
+transport.tcp.port: 9300
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+
+cluster.initial_master_nodes: ["es1","es2","es3"]
+discovery.seed_hosts: ["es1","es3"]
+
+bootstrap.memory_lock: true
+
+network.host: 0.0.0.0
