@@ -10,3 +10,4 @@ configs/elasticsearch-6.6.2/data0
 configs/elasticsearch-6.6.2/data1
 configs/elasticsearch-6.6.2/data2
 configs/elasticsearch/data
+configs/elasticsearch/logs
