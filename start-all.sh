@@ -39,4 +39,17 @@ else
 rm -rf ${PROJECT_ROOT}/configs/zentao/data/zbox/app/zentao/www/upgrade.php
 fi
 
+##解决一些log文件权限的问题
+if [ ! $PROJECT_ENV = "local" ];then
+    if [[ $EUID -ne 0 ]];
+    then
+        echo '非root'
+        sudo chmod -R 777 ..${PROJECT_ROOT}
+    else
+        echo 'root'
+        chmod -R 777 ..${PROJECT_ROOT}
+    fi
+fi
+
+
 
