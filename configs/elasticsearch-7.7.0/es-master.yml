@@ -1,0 +1,12 @@
+cluster.name: docker-cluster
+
+node.name: master
+node.master: true
+node.data: true
+network.host: 0.0.0.0
+network.publish_host: 192.168.31.45 # 这里是我内网ip
+cluster.initial_master_nodes:
+  - master
+
+http.cors.enabled: true
+http.cors.allow-origin: "*"

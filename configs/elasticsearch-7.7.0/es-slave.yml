@@ -1,0 +1,14 @@
+cluster.name: docker-cluster
+
+node.name: slave
+node.master: false
+node.data: true
+network.host: 0.0.0.0
+network.publish_host: 192.168.31.45
+http.port: 9201
+transport.tcp.port: 9301
+discovery.seed_hosts:
+  - 192.168.31.45:9300
+
+http.cors.enabled: true
+http.cors.allow-origin: "*"

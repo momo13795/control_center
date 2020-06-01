@@ -1,7 +1,7 @@
 version: '3'
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    image: harbor.jucce.cn/god/jenkins_lts
     restart: always
     volumes:
       - ${PROJECT_ROOT}/configs/jenkins/jenkins_home:/var/jenkins_home

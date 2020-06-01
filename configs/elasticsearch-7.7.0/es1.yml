@@ -1,4 +1,15 @@
 # 集群名称
+
+#下面以一台节点为例,其他的节点一样的步骤修改配置即可
+ #
+ #调高JVM线程数限制数量
+ #
+ #vim /etc/sysctl.conf
+ #添加vm.max_map_count=262144
+ #
+ #执行sysctl -p 使之生效
+
+
 cluster.name: my-test
 #节点名称
 node.name: es1
