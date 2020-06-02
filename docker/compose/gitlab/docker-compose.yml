@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: ${GITLABHOST}
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url "http://gitlab.mark.com:8929"
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '8929:8929'
+      - '2224:22'
+    volumes:
+      - ${PROJECT_ROOT}/configs/gitlab/config:/etc/gitlab
+      - ${PROJECT_ROOT}/configs/gitlab/logs:/var/log/gitlab
+      - ${PROJECT_ROOT}/configs/gitlab/data:/var/opt/gitlab
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}
