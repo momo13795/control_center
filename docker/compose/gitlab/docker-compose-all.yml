@@ -6,7 +6,7 @@ services:
     hostname: ${GITLABHOST}
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url "${GITLABEXTRAL}}"
+        external_url "${GITLABEXTRAL}"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
       - "8929:${GITLABPORT}"
