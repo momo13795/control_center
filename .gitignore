@@ -12,3 +12,4 @@ configs/elasticsearch-6.6.2/data2
 configs/elasticsearch/data
 configs/elasticsearch/logs
 configs/gitlab
+configs/gitlab-runner
