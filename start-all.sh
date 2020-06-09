@@ -44,10 +44,10 @@ if [ ! $PROJECT_ENV = "local" ];then
     if [[ $EUID -ne 0 ]];
     then
         echo '非root'
-        sudo chmod -R 777 ..${PROJECT_ROOT}
+        sudo chmod -R 777 ${PROJECT_ROOT}
     else
         echo 'root'
-        chmod -R 777 ..${PROJECT_ROOT}
+        chmod -R 777 ${PROJECT_ROOT}
     fi
 fi
 
