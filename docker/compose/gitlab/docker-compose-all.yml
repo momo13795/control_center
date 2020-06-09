@@ -6,11 +6,12 @@ services:
     hostname: ${GITLABHOST}
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url "${GITLABEXTRAL}:${GITLABPORT}"
+        external_url "${GITLABEXTRAL}}"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-      - '8929:8929'
-      - '2224:22'
+      - 8929:${GITLABPORT}
+      - 2224:22
+
     volumes:
       - ${PROJECT_ROOT}/configs/gitlab/config:/etc/gitlab
       - ${PROJECT_ROOT}/configs/gitlab/logs:/var/log/gitlab
