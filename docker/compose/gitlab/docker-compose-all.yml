@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: 'gitlab/gitlab-ce:latest'
+    image: 'harbor.jucce.cn/god/gitlab-ce:1.0'
     restart: always
     hostname: ${GITLABHOST}
     environment:
