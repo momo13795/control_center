@@ -24,6 +24,7 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
+      - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/nginx.conf:/etc/nginx/nginx.conf
       - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/conf.d:/etc/nginx/conf.d
       - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/vhost:/etc/nginx/vhost.d
       - ${PROJECT_ROOT}/configs/nginx-proxy-letsencrypt2/certs:/etc/nginx/certs:ro
