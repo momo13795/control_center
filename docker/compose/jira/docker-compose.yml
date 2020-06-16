@@ -1,0 +1,29 @@
+version: '3'
+services:
+  jira:
+    image: haxqer/jira
+    restart: always
+    container_name: jira-srv
+    volumes:
+      - ${PROJECT_ROOT}/configs/jira/jira/data:/var/jira
+    ports:
+      - 8086:8080
+    depends_on:
+      - jira_mysql
+  jira_mysql:
+    image: mariadb
+    container_name: mysql-jira
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: test
+      MYSQL_USER: mark
+      MYSQL_PASSWORD:
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_bin']
+    volumes:
+      - ${PROJECT_ROOT}/configs/jira/mysql/data:/var/lib/mysql
+
+networks:
+  default:
+    external:
+      name: ${NETWORK:-webproxy}

@@ -13,3 +13,4 @@ configs/elasticsearch/data
 configs/elasticsearch/logs
 configs/gitlab
 configs/gitlab-runner
+configs/jira
