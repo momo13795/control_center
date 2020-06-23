@@ -1,9 +1,18 @@
 #!/bin/bash
+#判断是否有.env文件
+if [ ! -f ./.env ];
+  then
+    cp .env.example .env
+fi
+
 #全局环境变量配置
 source ./.env
-#创建指定网络
-docker network create ${NETWORK}
 
+#创建指定网络
+if [ ! $(docker network ls | grep "$NETWORK") ];
+  then
+    docker network create ${NETWORK}
+fi
 
 #############service 启动###########################
 echo '启动nginx'
